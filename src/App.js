@@ -1,26 +1,48 @@
 import React from 'react';
+import Users from './users/Users';
+
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Link} from 'react-router-dom'
+import Route from 'react-router-dom/Route'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <ul>
+          <li>
+          <Link to="/">Home</Link>
+          </li>
+          <li>
+          <Link to="/about">About</Link>
+          </li>
+        </ul>
+       
+        <Route path="/" exact render = {
+          ()=> {
+            return  <Users></Users>
+          }
+        }/>
+
+        <Route path="/about/" exact render ={
+          ()=> {
+            return <h1>welcome about</h1>
+          }
+        }/>
+
+        <Route path="/user/:username" exact component = {user_1}
+        />
+         
+      </div>
+
+    </Router>
+      
   );
+}
+
+const user_1 = ({ match }) => {
+    return <h1>welcome user {match.params.username}</h1>
 }
 
 export default App;
