@@ -11,7 +11,7 @@ class Users extends Component {
         title: "User List",
     }
     makeMeYounger = () => {
-          let newState = this.state.users.map((user) => user.age -= 10);
+          let newState = this.state.users.map((user) => user.age -= 12);
 
           this.setState({
             newState
@@ -32,7 +32,7 @@ class Users extends Component {
 
         return ( <div>
 
-            <button onClick = {this.makeMeYounger}>Make us 10 years younger</button>
+            <button onClick = {this.makeMeYounger}>Make us 12 years younger</button>
             <br/>
 
             <User age={this.state.users[0].age}>{this.state.users[0].name}</User>
